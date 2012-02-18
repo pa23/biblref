@@ -4,3 +4,4 @@ build/
 ui_mainwindow.h
 ui_refbookdialog.h
 ui_refarticledialog.h
+ui_refpatentdialog.h

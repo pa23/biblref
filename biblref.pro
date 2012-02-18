@@ -24,14 +24,17 @@ TEMPLATE = app
 SOURCES += main.cpp \
     mainwindow.cpp \
     refbookdialog.cpp \
-    refarticledialog.cpp
+    refarticledialog.cpp \
+    refpatentdialog.cpp
 HEADERS += mainwindow.h \
     constants.h \
     refbookdialog.h \
-    refarticledialog.h
+    refarticledialog.h \
+    refpatentdialog.h
 FORMS += mainwindow.ui \
     refbookdialog.ui \
-    refarticledialog.ui
+    refarticledialog.ui \
+    refpatentdialog.ui
 unix: {
     DESTDIR = build/unix/bin
     MOC_DIR = build/unix/moc
