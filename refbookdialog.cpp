@@ -40,7 +40,7 @@ RefBookDialog::~RefBookDialog() {
     delete ui;
 }
 
-void RefBookDialog::on_pushButton_OK_clicked() {
+void RefBookDialog::on_pushButton_add_clicked() {
 
     QStringList authors = ui->lineEdit_authors->
             text().split(";", QString::SkipEmptyParts);
@@ -114,13 +114,16 @@ void RefBookDialog::on_pushButton_OK_clicked() {
         authors[i] = authors[i].trimmed();
     }
 
-    QStringList firstAuthName = authors[0].split(" ");
+    if ( authors.count() < 4 ) {
 
-    bibref += firstAuthName[firstAuthName.count()-1] + ", ";
+        QStringList firstAuthName = authors[0].split(" ");
 
-    for ( ptrdiff_t i=0; i<firstAuthName.count()-1; i++ ) {
+        bibref += firstAuthName[firstAuthName.count()-1] + ", ";
 
-        bibref += firstAuthName[i] + " ";
+        for ( ptrdiff_t i=0; i<firstAuthName.count()-1; i++ ) {
+
+            bibref += firstAuthName[i] + " ";
+        }
     }
 
     bibref += ui->lineEdit_title->text() + " / ";
@@ -190,8 +193,4 @@ void RefBookDialog::on_pushButton_OK_clicked() {
 
     plainTextEdit->moveCursor(QTextCursor::End);
     plainTextEdit->appendPlainText(bibref);
-
-    //
-
-    hide();
 }

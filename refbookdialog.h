@@ -39,7 +39,7 @@ public:
 
 private slots:
 
-    void on_pushButton_OK_clicked();
+    void on_pushButton_add_clicked();
 
 private:
 

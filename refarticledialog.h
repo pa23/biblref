@@ -2,7 +2,7 @@
     biblref
     Creation of bibliographic references.
 
-    File: mainwindow.h
+    File: refarticledialog.h
 
     Copyright (C) 2012 Artem Petrov <pa2311@gmail.com>
 
@@ -18,47 +18,34 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef REFARTICLEDIALOG_H
+#define REFARTICLEDIALOG_H
 
-#include <QMainWindow>
-#include <QSharedPointer>
-
-#include "refbookdialog.h"
-#include "refarticledialog.h"
+#include <QDialog>
+#include <QPlainTextEdit>
 
 namespace Ui {
-class MainWindow;
+class RefArticleDialog;
 }
 
-class MainWindow : public QMainWindow {
+class RefArticleDialog : public QDialog {
 
     Q_OBJECT
 
 public:
 
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    explicit RefArticleDialog(QPlainTextEdit *pte, QWidget *parent = 0);
+    ~RefArticleDialog();
 
 private slots:
 
-    void on_action_file_open_activated();
-    void on_action_file_save_activated();
-    void on_action_file_print_activated();
-    void on_action_file_quit_activated();
-
-    void on_action_ref_book_activated();
-    void on_action_ref_article_activated();
-
-    void on_action_help_about_activated();
+    void on_pushButton_add_clicked();
 
 private:
 
-    Ui::MainWindow *ui;
-
-    QSharedPointer<RefBookDialog> refbookdialog;
-    QSharedPointer<RefArticleDialog> refarticledialog;
+    Ui::RefArticleDialog *ui;
+    QPlainTextEdit *plainTextEdit;
 
 };
 
-#endif // MAINWINDOW_H
+#endif // REFARTICLEDIALOG_H

@@ -58,7 +58,7 @@
      <string>Ссылка</string>
     </property>
     <addaction name="action_ref_book"/>
-    <addaction name="action_ref_acticle"/>
+    <addaction name="action_ref_article"/>
     <addaction name="action_ref_thesis"/>
     <addaction name="action_ref_dissertation"/>
     <addaction name="action_ref_authabstract"/>
@@ -113,10 +113,7 @@
     <string>Книга...</string>
    </property>
   </action>
-  <action name="action_ref_acticle">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
+  <action name="action_ref_article">
    <property name="text">
     <string>Статья...</string>
    </property>

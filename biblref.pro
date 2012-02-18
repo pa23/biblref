@@ -23,12 +23,15 @@ TARGET = biblref
 TEMPLATE = app
 SOURCES += main.cpp \
     mainwindow.cpp \
-    refbookdialog.cpp
+    refbookdialog.cpp \
+    refarticledialog.cpp
 HEADERS += mainwindow.h \
     constants.h \
-    refbookdialog.h
+    refbookdialog.h \
+    refarticledialog.h
 FORMS += mainwindow.ui \
-    refbookdialog.ui
+    refbookdialog.ui \
+    refarticledialog.ui
 unix: {
     DESTDIR = build/unix/bin
     MOC_DIR = build/unix/moc

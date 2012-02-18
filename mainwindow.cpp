@@ -23,6 +23,7 @@
 
 #include "constants.h"
 
+#include <QSharedPointer>
 #include <QString>
 #include <QMessageBox>
 #include <QFileDialog>
@@ -38,7 +39,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
 
-    refbookdialog = new RefBookDialog(ui->plainTextEdit_references);
+    setWindowTitle("biblref " + VERSION);
+
+    refbookdialog = QSharedPointer<RefBookDialog>
+            (new RefBookDialog(ui->plainTextEdit_references));
+    refarticledialog = QSharedPointer<RefArticleDialog>
+            (new RefArticleDialog(ui->plainTextEdit_references));
 }
 
 MainWindow::~MainWindow() {
@@ -141,6 +147,11 @@ void MainWindow::on_action_file_quit_activated() {
 void MainWindow::on_action_ref_book_activated() {
 
     refbookdialog->exec();
+}
+
+void MainWindow::on_action_ref_article_activated() {
+
+    refarticledialog->exec();
 }
 
 void MainWindow::on_action_help_about_activated() {
