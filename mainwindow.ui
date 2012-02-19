@@ -39,7 +39,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -63,7 +63,6 @@
     <addaction name="action_ref_patent"/>
     <addaction name="action_ref_inventsertificate"/>
     <addaction name="action_ref_thesis"/>
-    <addaction name="action_ref_authabstract"/>
     <addaction name="action_ref_deposmanuscript"/>
    </widget>
    <widget class="QMenu" name="menu_3">
@@ -128,13 +127,10 @@
   </action>
   <action name="action_ref_dissertation">
    <property name="text">
-    <string>Диссертация...</string>
+    <string>Диссертация/Автореферат...</string>
    </property>
   </action>
   <action name="action_ref_authabstract">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="text">
     <string>Автореферат...</string>
    </property>

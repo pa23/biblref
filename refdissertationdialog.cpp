@@ -70,15 +70,6 @@ void RefDissertationDialog::on_pushButton_add_clicked() {
         return;
     }
 
-    if ( ui->lineEdit_speccode->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Диссертация"
-                              "\" необходимо указать код специальности.");
-        return;
-    }
-
     if ( ui->lineEdit_city->text().isEmpty() ) {
 
         QMessageBox::critical(this, "biblref",
@@ -101,12 +92,26 @@ void RefDissertationDialog::on_pushButton_add_clicked() {
         bibref += authName[i] + " ";
     }
 
-    bibref += ui->lineEdit_title->text()
-            + " : дис. ... "
-            + ui->lineEdit_academicdeg->text()
-            + ": "
-            + ui->lineEdit_speccode->text()
-            + ". ― "
+    bibref += ui->lineEdit_title->text();
+
+    if ( ui->checkBox_authabstract->isChecked() ) {
+
+        bibref += " : автореферат дис. ... ";
+    }
+    else {
+
+        bibref += " : дис. ... ";
+    }
+
+    bibref += ui->lineEdit_academicdeg->text();
+
+    if ( !ui->lineEdit_speccode->text().isEmpty() ) {
+
+        bibref += ": "
+                + ui->lineEdit_speccode->text();
+    }
+
+    bibref += ". ― "
             + ui->lineEdit_city->text()
             + ", "
             + QString::number(ui->spinBox_year->value())
