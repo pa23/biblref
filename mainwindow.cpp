@@ -47,6 +47,8 @@ MainWindow::MainWindow(QWidget *parent) :
             (new RefArticleDialog(ui->plainTextEdit_references));
     refpatentdialog = QSharedPointer<RefPatentDialog>
             (new RefPatentDialog(ui->plainTextEdit_references));
+    refinventsertificatedialog = QSharedPointer<RefInventSertificateDialog>
+            (new RefInventSertificateDialog(ui->plainTextEdit_references));
 }
 
 MainWindow::~MainWindow() {
@@ -159,6 +161,11 @@ void MainWindow::on_action_ref_article_activated() {
 void MainWindow::on_action_ref_patent_activated() {
 
     refpatentdialog->exec();
+}
+
+void MainWindow::on_action_ref_inventsertificate_activated() {
+
+    refinventsertificatedialog->exec();
 }
 
 void MainWindow::on_action_help_about_activated() {
