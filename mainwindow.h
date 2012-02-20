@@ -27,6 +27,7 @@
 #include "refbookdialog.h"
 #include "refarticledialog.h"
 #include "refdissertationdialog.h"
+#include "refdeposmanuscriptdialog.h"
 #include "refpatentdialog.h"
 #include "refinventsertificatedialog.h"
 
@@ -53,6 +54,7 @@ private slots:
     void on_action_ref_book_activated();
     void on_action_ref_article_activated();
     void on_action_ref_dissertation_activated();
+    void on_action_ref_deposmanuscript_activated();
     void on_action_ref_patent_activated();
     void on_action_ref_inventsertificate_activated();
 
@@ -65,6 +67,7 @@ private:
     QSharedPointer<RefBookDialog> refbookdialog;
     QSharedPointer<RefArticleDialog> refarticledialog;
     QSharedPointer<RefDissertationDialog> refdissertationdialog;
+    QSharedPointer<RefDeposManuscriptDialog> refdeposmanuscriptdialog;
     QSharedPointer<RefPatentDialog> refpatentdialog;
     QSharedPointer<RefInventSertificateDialog> refinventsertificatedialog;
 

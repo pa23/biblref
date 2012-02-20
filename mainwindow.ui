@@ -60,10 +60,10 @@
     <addaction name="action_ref_book"/>
     <addaction name="action_ref_article"/>
     <addaction name="action_ref_dissertation"/>
+    <addaction name="action_ref_deposmanuscript"/>
     <addaction name="action_ref_patent"/>
     <addaction name="action_ref_inventsertificate"/>
     <addaction name="action_ref_thesis"/>
-    <addaction name="action_ref_deposmanuscript"/>
    </widget>
    <widget class="QMenu" name="menu_3">
     <property name="title">
@@ -136,9 +136,6 @@
    </property>
   </action>
   <action name="action_ref_deposmanuscript">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="text">
     <string>Депонированная рукопись...</string>
    </property>
