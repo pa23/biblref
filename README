@@ -9,13 +9,12 @@ FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 details. You should have received a copy of the GNU General Public License along
 with this program. If not, see <http://www.gnu.org/licenses/>.
 --------------------------------------------------------------------------------
-Creation of bibliographic references.
+Создание библиографических ссылок
 --------------------------------------------------------------------------------
-Dependences
+Зависимости
   GNU/Linux
     Qt >=4.8.0 (libQtCore.so.4, libQtGui.so.4)
-  MS Windows x86 (all the necessary components are included in the binary
-                  package)
+  MS Windows x86 (все необходимые библиотеки включены в состав архива)
     Qt x86 >=4.8.0 (QtCore4.dll, QtGui4.dll)
     MinGW (libgcc_s_dw2-1.dll, mingwm10.dll)
 --------------------------------------------------------------------------------

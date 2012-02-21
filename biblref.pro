@@ -21,36 +21,37 @@
 QT += core gui
 TARGET = biblref
 TEMPLATE = app
-SOURCES += main.cpp \
-    mainwindow.cpp \
-    refbookdialog.cpp \
-    refarticledialog.cpp \
-    refpatentdialog.cpp \
-    refinventsertificatedialog.cpp \
-    refdissertationdialog.cpp \
-    refdeposmanuscriptdialog.cpp \
-    refthesisdialog.cpp
-HEADERS += mainwindow.h \
-    constants.h \
-    refbookdialog.h \
-    refarticledialog.h \
-    refpatentdialog.h \
-    refinventsertificatedialog.h \
-    refdissertationdialog.h \
-    refdeposmanuscriptdialog.h \
-    refthesisdialog.h
-FORMS += mainwindow.ui \
-    refbookdialog.ui \
-    refarticledialog.ui \
-    refpatentdialog.ui \
-    refinventsertificatedialog.ui \
-    refdissertationdialog.ui \
-    refdeposmanuscriptdialog.ui \
-    refthesisdialog.ui
+SOURCES += sources/main.cpp \
+    sources/mainwindow.cpp \
+    sources/refbookdialog.cpp \
+    sources/refarticledialog.cpp \
+    sources/refpatentdialog.cpp \
+    sources/refinventsertificatedialog.cpp \
+    sources/refdissertationdialog.cpp \
+    sources/refdeposmanuscriptdialog.cpp \
+    sources/refthesisdialog.cpp
+HEADERS += sources/mainwindow.h \
+    sources/constants.h \
+    sources/refbookdialog.h \
+    sources/refarticledialog.h \
+    sources/refpatentdialog.h \
+    sources/refinventsertificatedialog.h \
+    sources/refdissertationdialog.h \
+    sources/refdeposmanuscriptdialog.h \
+    sources/refthesisdialog.h
+FORMS += sources/mainwindow.ui \
+    sources/refbookdialog.ui \
+    sources/refarticledialog.ui \
+    sources/refpatentdialog.ui \
+    sources/refinventsertificatedialog.ui \
+    sources/refdissertationdialog.ui \
+    sources/refdeposmanuscriptdialog.ui \
+    sources/refthesisdialog.ui
 unix: {
     DESTDIR = build/unix/bin
     MOC_DIR = build/unix/moc
     RCC_DIR = build/unix/rc
+    UI_HEADERS_DIR = build/unix/ui_h
     CONFIG (debug, debug|release) {
         OBJECTS_DIR = build/unix/debug
     }
@@ -64,6 +65,7 @@ win32: {
     DESTDIR = build\\win\\bin
     MOC_DIR = build\\win\\moc
     RCC_DIR = build\\win\\rc
+    UI_HEADERS_DIR = build\\win\\ui_h
     CONFIG (debug, debug|release) {
         OBJECTS_DIR = build\\win\\debug
     }

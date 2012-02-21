@@ -64,6 +64,26 @@ MainWindow::~MainWindow() {
 
 void MainWindow::on_action_file_open_activated() {
 
+    if ( !ui->plainTextEdit_references->document()->isEmpty() ) {
+
+        ptrdiff_t ret = QMessageBox::question(
+                    0,
+                    "biblref",
+                    "Документ содержит данные. Сохранить их?",
+                    QMessageBox::Yes,
+                    QMessageBox::No,
+                    QMessageBox::Cancel);
+
+        if ( ret == QMessageBox::Yes ) {
+
+            on_action_file_save_activated();
+        }
+        else if ( ret == QMessageBox::Cancel ) {
+
+            return;
+        }
+    }
+
     QString dir(QDir::currentPath());
 
     QString filename(QFileDialog::getOpenFileName(
@@ -150,6 +170,26 @@ void MainWindow::on_action_file_print_activated() {
 }
 
 void MainWindow::on_action_file_quit_activated() {
+
+    if ( !ui->plainTextEdit_references->document()->isEmpty() ) {
+
+        ptrdiff_t ret = QMessageBox::question(
+                    0,
+                    "biblref",
+                    "Документ содержит данные. Сохранить их?",
+                    QMessageBox::Yes,
+                    QMessageBox::No,
+                    QMessageBox::Cancel);
+
+        if ( ret == QMessageBox::Yes ) {
+
+            on_action_file_save_activated();
+        }
+        else if ( ret == QMessageBox::Cancel ) {
+
+            return;
+        }
+    }
 
     close();
 }

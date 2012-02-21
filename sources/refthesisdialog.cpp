@@ -81,6 +81,14 @@ void RefThesisDialog::on_pushButton_add_clicked() {
         return;
     }
 
+    if ( ui->spinBox_startpage->value() > ui->spinBox_endpage->value() ) {
+
+        QMessageBox::critical(this, "biblref",
+                              "Ссылка не сформирована.\n"
+                              "Проверьте номера страниц.");
+        return;
+    }
+
     //
 
     QString bibref("");

@@ -76,8 +76,7 @@ void RefArticleDialog::on_pushButton_add_clicked() {
 
         QMessageBox::critical(this, "biblref",
                               "Ссылка не сформирована.\n"
-                              "Номер страницы начала статьи не может быть "
-                              "больше номера страницы ее окончания.");
+                              "Проверьте номера страниц.");
         return;
     }
 
