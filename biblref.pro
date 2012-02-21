@@ -28,7 +28,8 @@ SOURCES += main.cpp \
     refpatentdialog.cpp \
     refinventsertificatedialog.cpp \
     refdissertationdialog.cpp \
-    refdeposmanuscriptdialog.cpp
+    refdeposmanuscriptdialog.cpp \
+    refthesisdialog.cpp
 HEADERS += mainwindow.h \
     constants.h \
     refbookdialog.h \
@@ -36,14 +37,16 @@ HEADERS += mainwindow.h \
     refpatentdialog.h \
     refinventsertificatedialog.h \
     refdissertationdialog.h \
-    refdeposmanuscriptdialog.h
+    refdeposmanuscriptdialog.h \
+    refthesisdialog.h
 FORMS += mainwindow.ui \
     refbookdialog.ui \
     refarticledialog.ui \
     refpatentdialog.ui \
     refinventsertificatedialog.ui \
     refdissertationdialog.ui \
-    refdeposmanuscriptdialog.ui
+    refdeposmanuscriptdialog.ui \
+    refthesisdialog.ui
 unix: {
     DESTDIR = build/unix/bin
     MOC_DIR = build/unix/moc

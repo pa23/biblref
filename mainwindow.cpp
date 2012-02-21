@@ -49,6 +49,8 @@ MainWindow::MainWindow(QWidget *parent) :
             (new RefDissertationDialog(ui->plainTextEdit_references));
     refdeposmanuscriptdialog = QSharedPointer<RefDeposManuscriptDialog>
             (new RefDeposManuscriptDialog(ui->plainTextEdit_references));
+    refthesisdialog = QSharedPointer<RefThesisDialog>
+            (new RefThesisDialog(ui->plainTextEdit_references));
     refpatentdialog = QSharedPointer<RefPatentDialog>
             (new RefPatentDialog(ui->plainTextEdit_references));
     refinventsertificatedialog = QSharedPointer<RefInventSertificateDialog>
@@ -152,6 +154,20 @@ void MainWindow::on_action_file_quit_activated() {
     close();
 }
 
+void MainWindow::on_action_view_folding_activated() {
+
+    if ( ui->action_view_folding->isChecked() ) {
+
+        ui->plainTextEdit_references->
+                setLineWrapMode(QPlainTextEdit::WidgetWidth);
+    }
+    else {
+
+        ui->plainTextEdit_references->
+                setLineWrapMode(QPlainTextEdit::NoWrap);
+    }
+}
+
 void MainWindow::on_action_ref_book_activated() {
 
     refbookdialog->exec();
@@ -170,6 +186,11 @@ void MainWindow::on_action_ref_dissertation_activated() {
 void MainWindow::on_action_ref_deposmanuscript_activated() {
 
     refdeposmanuscriptdialog->exec();
+}
+
+void MainWindow::on_action_ref_thesis_activated() {
+
+    refthesisdialog->exec();
 }
 
 void MainWindow::on_action_ref_patent_activated() {
