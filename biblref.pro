@@ -73,3 +73,5 @@ win32: {
         OBJECTS_DIR = build\\win\\release
     }
 }
+RESOURCES += sources/biblref.qrc
+RC_FILE += sources/biblref.rc

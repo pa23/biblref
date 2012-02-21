@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>../icons/biblref.png</file>
+    </qresource>
+</RCC>

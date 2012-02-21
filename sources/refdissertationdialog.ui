@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>530</width>
-    <height>263</height>
+    <width>566</width>
+    <height>320</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>biblref - Диссертация/Автореферат</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="biblref.qrc">
+    <normaloff>:/icons/icons/biblref.png</normaloff>:/icons/icons/biblref.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="sizeConstraint">
@@ -270,7 +274,9 @@
   <tabstop>pushButton_add</tabstop>
   <tabstop>pushButton_close</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="biblref.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>pushButton_close</sender>

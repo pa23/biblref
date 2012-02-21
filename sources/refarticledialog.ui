@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>521</width>
-    <height>243</height>
+    <width>552</width>
+    <height>295</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>biblref - Статья</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="biblref.qrc">
+    <normaloff>:/icons/icons/biblref.png</normaloff>:/icons/icons/biblref.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="sizeConstraint">
@@ -359,7 +363,9 @@
   <tabstop>pushButton_add</tabstop>
   <tabstop>pushButton_close</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="biblref.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>pushButton_close</sender>
