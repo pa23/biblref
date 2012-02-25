@@ -11,10 +11,10 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 --------------------------------------------------------------------------------
 Creation of bibliographic references.
 --------------------------------------------------------------------------------
-Зависимости
+Dependencies
   GNU/Linux
     Qt >=4.8.0 (libQtCore.so.4, libQtGui.so.4)
-  MS Windows x86 (все необходимые библиотеки включены в состав архива)
+  MS Windows x86 (all necessary components are included in archive)
     Qt x86 >=4.8.0 (QtCore4.dll, QtGui4.dll)
     MinGW (libgcc_s_dw2-1.dll, mingwm10.dll)
 --------------------------------------------------------------------------------
