@@ -2,7 +2,7 @@
     biblref
     Creation of bibliographic references.
 
-    File: constants.h
+    File: refsitedialog.h
 
     Copyright (C) 2012 Artem Petrov <pa2311@gmail.com>
 
@@ -18,11 +18,34 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef CONSTANTS_H
-#define CONSTANTS_H
+#ifndef REFSITEDIALOG_H
+#define REFSITEDIALOG_H
 
-#include <QString>
+#include <QDialog>
+#include <QPlainTextEdit>
 
-const QString VERSION = "v1.1.0";
+namespace Ui {
+class RefSiteDialog;
+}
 
-#endif // CONSTANTS_H
+class RefSiteDialog : public QDialog {
+
+    Q_OBJECT
+
+public:
+
+    explicit RefSiteDialog(QPlainTextEdit *, QWidget *parent = 0);
+    ~RefSiteDialog();
+
+private slots:
+
+    void on_pushButton_add_clicked();
+
+private:
+
+    Ui::RefSiteDialog *ui;
+    QPlainTextEdit *plainTextEdit;
+
+};
+
+#endif // REFSITEDIALOG_H

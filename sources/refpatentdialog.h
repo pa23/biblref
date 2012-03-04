@@ -34,7 +34,7 @@ class RefPatentDialog : public QDialog {
 
 public:
 
-    explicit RefPatentDialog(QPlainTextEdit *pte, QWidget *parent = 0);
+    explicit RefPatentDialog(QPlainTextEdit *, QWidget *parent = 0);
     ~RefPatentDialog();
 
 private slots:

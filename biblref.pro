@@ -29,7 +29,8 @@ SOURCES += sources/main.cpp \
     sources/refinventsertificatedialog.cpp \
     sources/refdissertationdialog.cpp \
     sources/refdeposmanuscriptdialog.cpp \
-    sources/refthesisdialog.cpp
+    sources/refthesisdialog.cpp \
+    sources/refsitedialog.cpp
 HEADERS += sources/mainwindow.h \
     sources/constants.h \
     sources/refbookdialog.h \
@@ -38,7 +39,8 @@ HEADERS += sources/mainwindow.h \
     sources/refinventsertificatedialog.h \
     sources/refdissertationdialog.h \
     sources/refdeposmanuscriptdialog.h \
-    sources/refthesisdialog.h
+    sources/refthesisdialog.h \
+    sources/refsitedialog.h
 FORMS += sources/mainwindow.ui \
     sources/refbookdialog.ui \
     sources/refarticledialog.ui \
@@ -46,9 +48,10 @@ FORMS += sources/mainwindow.ui \
     sources/refinventsertificatedialog.ui \
     sources/refdissertationdialog.ui \
     sources/refdeposmanuscriptdialog.ui \
-    sources/refthesisdialog.ui
+    sources/refthesisdialog.ui \
+    sources/refsitedialog.ui
 unix: {
-    DESTDIR = build/unix/bin
+    DESTDIR = build/unix/bin/biblref
     MOC_DIR = build/unix/moc
     RCC_DIR = build/unix/rc
     UI_HEADERS_DIR = build/unix/ui_h
@@ -62,7 +65,7 @@ unix: {
     INSTALLS += target
 }
 win32: {
-    DESTDIR = build\\win\\bin
+    DESTDIR = build\\win\\bin\\biblref
     MOC_DIR = build\\win\\moc
     RCC_DIR = build\\win\\rc
     UI_HEADERS_DIR = build\\win\\ui_h

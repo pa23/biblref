@@ -34,7 +34,7 @@ class RefBookDialog : public QDialog {
 
 public:
 
-    explicit RefBookDialog(QPlainTextEdit *pte, QWidget *parent = 0);
+    explicit RefBookDialog(QPlainTextEdit *, QWidget *parent = 0);
     ~RefBookDialog();
 
 private slots:

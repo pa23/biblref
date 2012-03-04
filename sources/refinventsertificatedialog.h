@@ -34,7 +34,7 @@ class RefInventSertificateDialog : public QDialog {
 
 public:
 
-    explicit RefInventSertificateDialog(QPlainTextEdit *pte,
+    explicit RefInventSertificateDialog(QPlainTextEdit *,
                                         QWidget *parent = 0);
     ~RefInventSertificateDialog();
 

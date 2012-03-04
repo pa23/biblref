@@ -45,6 +45,8 @@ MainWindow::MainWindow(QWidget *parent) :
             (new RefBookDialog(ui->plainTextEdit_references));
     refarticledialog = QSharedPointer<RefArticleDialog>
             (new RefArticleDialog(ui->plainTextEdit_references));
+    refsitedialog = QSharedPointer<RefSiteDialog>
+            (new RefSiteDialog(ui->plainTextEdit_references));
     refdissertationdialog = QSharedPointer<RefDissertationDialog>
             (new RefDissertationDialog(ui->plainTextEdit_references));
     refdeposmanuscriptdialog = QSharedPointer<RefDeposManuscriptDialog>
@@ -216,6 +218,11 @@ void MainWindow::on_action_ref_book_activated() {
 void MainWindow::on_action_ref_article_activated() {
 
     refarticledialog->exec();
+}
+
+void MainWindow::on_action_ref_site_activated() {
+
+    refsitedialog->exec();
 }
 
 void MainWindow::on_action_ref_dissertation_activated() {

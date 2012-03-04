@@ -63,6 +63,7 @@
     </property>
     <addaction name="action_ref_book"/>
     <addaction name="action_ref_article"/>
+    <addaction name="action_ref_site"/>
     <addaction name="action_ref_dissertation"/>
     <addaction name="action_ref_deposmanuscript"/>
     <addaction name="action_ref_thesis"/>
@@ -172,6 +173,11 @@
    </property>
    <property name="text">
     <string>Перенос строк</string>
+   </property>
+  </action>
+  <action name="action_ref_site">
+   <property name="text">
+    <string>Сайт...</string>
    </property>
   </action>
  </widget>

@@ -34,7 +34,7 @@ class RefArticleDialog : public QDialog {
 
 public:
 
-    explicit RefArticleDialog(QPlainTextEdit *pte, QWidget *parent = 0);
+    explicit RefArticleDialog(QPlainTextEdit *, QWidget *parent = 0);
     ~RefArticleDialog();
 
 private slots:

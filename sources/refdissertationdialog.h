@@ -34,7 +34,7 @@ class RefDissertationDialog : public QDialog {
 
 public:
 
-    explicit RefDissertationDialog(QPlainTextEdit *pte,
+    explicit RefDissertationDialog(QPlainTextEdit *,
                                    QWidget *parent = 0);
     ~RefDissertationDialog();
 

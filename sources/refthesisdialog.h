@@ -34,7 +34,7 @@ class RefThesisDialog : public QDialog {
 
 public:
 
-    explicit RefThesisDialog(QPlainTextEdit *pte, QWidget *parent = 0);
+    explicit RefThesisDialog(QPlainTextEdit *, QWidget *parent = 0);
     ~RefThesisDialog();
 
 private slots:

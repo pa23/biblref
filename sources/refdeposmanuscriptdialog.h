@@ -34,7 +34,7 @@ class RefDeposManuscriptDialog : public QDialog {
 
 public:
 
-    explicit RefDeposManuscriptDialog(QPlainTextEdit *pte,
+    explicit RefDeposManuscriptDialog(QPlainTextEdit *,
                                       QWidget *parent = 0);
     ~RefDeposManuscriptDialog();
 
