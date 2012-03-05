@@ -23,6 +23,7 @@
 
 #include <QMainWindow>
 #include <QSharedPointer>
+#include <QCloseEvent>
 
 #include "refbookdialog.h"
 #include "refarticledialog.h"
@@ -45,6 +46,10 @@ public:
 
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+protected:
+
+     void closeEvent(QCloseEvent *event);
 
 private slots:
 

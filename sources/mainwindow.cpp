@@ -61,8 +61,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow() {
 
-    saveIfNecessary();
     delete ui;
+}
+
+void MainWindow::closeEvent(QCloseEvent *event) {
+
+    saveIfNecessary();
+    event->accept();
 }
 
 void MainWindow::on_action_file_open_activated() {
@@ -156,7 +161,6 @@ void MainWindow::on_action_file_print_activated() {
 
 void MainWindow::on_action_file_quit_activated() {
 
-    saveIfNecessary();
     close();
 }
 
