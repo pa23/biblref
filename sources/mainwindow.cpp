@@ -61,30 +61,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow() {
 
+    saveIfNecessary();
     delete ui;
 }
 
 void MainWindow::on_action_file_open_activated() {
 
-    if ( !ui->plainTextEdit_references->document()->isEmpty() ) {
-
-        ptrdiff_t ret = QMessageBox::question(
-                    0,
-                    "biblref",
-                    "Документ содержит данные. Сохранить их?",
-                    QMessageBox::Yes,
-                    QMessageBox::No,
-                    QMessageBox::Cancel);
-
-        if ( ret == QMessageBox::Yes ) {
-
-            on_action_file_save_activated();
-        }
-        else if ( ret == QMessageBox::Cancel ) {
-
-            return;
-        }
-    }
+    saveIfNecessary();
 
     QString dir(QDir::currentPath());
 
@@ -173,26 +156,7 @@ void MainWindow::on_action_file_print_activated() {
 
 void MainWindow::on_action_file_quit_activated() {
 
-    if ( !ui->plainTextEdit_references->document()->isEmpty() ) {
-
-        ptrdiff_t ret = QMessageBox::question(
-                    0,
-                    "biblref",
-                    "Документ содержит данные. Сохранить их?",
-                    QMessageBox::Yes,
-                    QMessageBox::No,
-                    QMessageBox::Cancel);
-
-        if ( ret == QMessageBox::Yes ) {
-
-            on_action_file_save_activated();
-        }
-        else if ( ret == QMessageBox::Cancel ) {
-
-            return;
-        }
-    }
-
+    saveIfNecessary();
     close();
 }
 
@@ -280,4 +244,22 @@ void MainWindow::on_action_help_about_activated() {
             "http://www.gnu.org/licenses/</a>.<br>";
 
     QMessageBox::about(this, "О программе biblref", str);
+}
+
+void MainWindow::saveIfNecessary() {
+
+    if ( !ui->plainTextEdit_references->document()->isEmpty() ) {
+
+        ptrdiff_t ret = QMessageBox::question(
+                    0,
+                    "biblref",
+                    "Документ содержит данные. Сохранить их?",
+                    QMessageBox::Yes,
+                    QMessageBox::No);
+
+        if ( ret == QMessageBox::Yes ) {
+
+            on_action_file_save_activated();
+        }
+    }
 }

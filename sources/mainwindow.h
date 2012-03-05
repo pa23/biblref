@@ -79,6 +79,8 @@ private:
     QSharedPointer<RefPatentDialog> refpatentdialog;
     QSharedPointer<RefInventSertificateDialog> refinventsertificatedialog;
 
+    void saveIfNecessary();
+
 };
 
 #endif // MAINWINDOW_H
