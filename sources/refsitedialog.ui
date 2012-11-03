@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>589</width>
-    <height>291</height>
+    <width>607</width>
+    <height>299</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -91,13 +91,13 @@
         <widget class="QSpinBox" name="spinBox_year">
          <property name="minimumSize">
           <size>
-           <width>100</width>
+           <width>120</width>
            <height>0</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>100</width>
+           <width>120</width>
            <height>16777215</height>
           </size>
          </property>
@@ -171,13 +171,13 @@
         <widget class="QDateEdit" name="dateEdit">
          <property name="minimumSize">
           <size>
-           <width>100</width>
+           <width>120</width>
            <height>0</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>100</width>
+           <width>120</width>
            <height>16777215</height>
           </size>
          </property>

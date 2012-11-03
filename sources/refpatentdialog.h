@@ -46,6 +46,8 @@ private:
     Ui::RefPatentDialog *ui;
     QPlainTextEdit *plainTextEdit;
 
+    enum { PATENT, PROFMODEL };
+
 };
 
 #endif // REFPATENTDIALOG_H

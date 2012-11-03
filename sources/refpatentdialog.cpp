@@ -86,8 +86,16 @@ void RefPatentDialog::on_pushButton_add_clicked() {
 
     QString bibref("");
 
-    bibref += "Пат. "
-            + QString::number(ui->spinBox_docnumber->value())
+    if ( ui->comboBox_doctype->currentIndex() == PATENT ) {
+
+        bibref += "Пат. ";
+    }
+    else if ( ui->comboBox_doctype->currentIndex() == PROFMODEL ) {
+
+        bibref += "П. м. ";
+    }
+
+    bibref += QString::number(ui->spinBox_docnumber->value())
             + " "
             + ui->lineEdit_country->text()
             + ", "
