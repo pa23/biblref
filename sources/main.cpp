@@ -4,7 +4,7 @@
 
     File: main.cpp
 
-    Copyright (C) 2012 Artem Petrov <pa2311@gmail.com>
+    Copyright (C) 2012-2013 Artem Petrov <pa2311@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QtGui/QApplication>
+#include <QApplication>
 #include <QTextCodec>
 
 #include "mainwindow.h"
@@ -27,9 +27,7 @@ int main(int argc, char *argv[]) {
 
     QApplication a(argc, argv);
 
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
-    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
 
     MainWindow w;
     w.show();

@@ -4,7 +4,7 @@
 
     File: mainwindow.cpp
 
-    Copyright (C) 2012 Artem Petrov <pa2311@gmail.com>
+    Copyright (C) 2012-2013 Artem Petrov <pa2311@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -70,7 +70,7 @@ void MainWindow::closeEvent(QCloseEvent *event) {
     event->accept();
 }
 
-void MainWindow::on_action_file_open_activated() {
+void MainWindow::on_action_file_open_triggered() {
 
     saveIfNecessary();
 
@@ -80,8 +80,8 @@ void MainWindow::on_action_file_open_activated() {
                          this,
                          tr("Открыть файл..."),
                          dir,
-                         QString::fromAscii(
-                             "Text files (*.txt);;All files (*.*)"
+                         QString::fromLatin1(
+                             "Text files (*.txt);;All files (*)"
                              ),
                          0,
                          0));
@@ -109,7 +109,7 @@ void MainWindow::on_action_file_open_activated() {
     }
 }
 
-void MainWindow::on_action_file_save_activated() {
+void MainWindow::on_action_file_save_triggered() {
 
     QString dir(QDir::currentPath());
 
@@ -117,8 +117,8 @@ void MainWindow::on_action_file_save_activated() {
                          this,
                          "Сохранить в файл...",
                          dir,
-                         QString::fromAscii(
-                             "Text files (*.txt);;All files (*.*)"
+                         QString::fromLatin1(
+                             "Text files (*.txt);;All files (*)"
                              ),
                          0,
                          0));
@@ -144,7 +144,7 @@ void MainWindow::on_action_file_save_activated() {
     }
 }
 
-void MainWindow::on_action_file_print_activated() {
+void MainWindow::on_action_file_print_triggered() {
 
     QPrinter printer;
 
@@ -159,12 +159,12 @@ void MainWindow::on_action_file_print_activated() {
     }
 }
 
-void MainWindow::on_action_file_quit_activated() {
+void MainWindow::on_action_file_quit_triggered() {
 
     close();
 }
 
-void MainWindow::on_action_view_folding_activated() {
+void MainWindow::on_action_view_folding_triggered() {
 
     if ( ui->action_view_folding->isChecked() ) {
 
@@ -178,51 +178,51 @@ void MainWindow::on_action_view_folding_activated() {
     }
 }
 
-void MainWindow::on_action_ref_book_activated() {
+void MainWindow::on_action_ref_book_triggered() {
 
     refbookdialog->exec();
 }
 
-void MainWindow::on_action_ref_article_activated() {
+void MainWindow::on_action_ref_article_triggered() {
 
     refarticledialog->exec();
 }
 
-void MainWindow::on_action_ref_site_activated() {
+void MainWindow::on_action_ref_site_triggered() {
 
     refsitedialog->exec();
 }
 
-void MainWindow::on_action_ref_dissertation_activated() {
+void MainWindow::on_action_ref_dissertation_triggered() {
 
     refdissertationdialog->exec();
 }
 
-void MainWindow::on_action_ref_deposmanuscript_activated() {
+void MainWindow::on_action_ref_deposmanuscript_triggered() {
 
     refdeposmanuscriptdialog->exec();
 }
 
-void MainWindow::on_action_ref_thesis_activated() {
+void MainWindow::on_action_ref_thesis_triggered() {
 
     refthesisdialog->exec();
 }
 
-void MainWindow::on_action_ref_patent_activated() {
+void MainWindow::on_action_ref_patent_triggered() {
 
     refpatentdialog->exec();
 }
 
-void MainWindow::on_action_ref_inventsertificate_activated() {
+void MainWindow::on_action_ref_inventsertificate_triggered() {
 
     refinventsertificatedialog->exec();
 }
 
-void MainWindow::on_action_help_about_activated() {
+void MainWindow::on_action_help_about_triggered() {
 
     QString str = "<b>biblref " + VERSION + "</b>\n"
             "<br><br>Создание библиографических ссылок."
-            "<br><br>Copyright (C) 2012 Artem Petrov "
+            "<br><br>Copyright (C) 2012-2013 Artem Petrov "
             "<a href= \"mailto:pa2311@gmail.com\" >pa2311@gmail.com</a>"
             "<br><br>Сайт программы: "
             "<a href= \"https://github.com/pa23/biblref\">"
@@ -263,7 +263,7 @@ void MainWindow::saveIfNecessary() {
 
         if ( ret == QMessageBox::Yes ) {
 
-            on_action_file_save_activated();
+            on_action_file_save_triggered();
         }
     }
 }

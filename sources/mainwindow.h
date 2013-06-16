@@ -4,7 +4,7 @@
 
     File: mainwindow.h
 
-    Copyright (C) 2012 Artem Petrov <pa2311@gmail.com>
+    Copyright (C) 2012-2013 Artem Petrov <pa2311@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -53,23 +53,23 @@ protected:
 
 private slots:
 
-    void on_action_file_open_activated();
-    void on_action_file_save_activated();
-    void on_action_file_print_activated();
-    void on_action_file_quit_activated();
+    void on_action_file_open_triggered();
+    void on_action_file_save_triggered();
+    void on_action_file_print_triggered();
+    void on_action_file_quit_triggered();
 
-    void on_action_view_folding_activated();
+    void on_action_view_folding_triggered();
 
-    void on_action_ref_book_activated();
-    void on_action_ref_article_activated();
-    void on_action_ref_site_activated();
-    void on_action_ref_dissertation_activated();
-    void on_action_ref_deposmanuscript_activated();
-    void on_action_ref_thesis_activated();
-    void on_action_ref_patent_activated();
-    void on_action_ref_inventsertificate_activated();
+    void on_action_ref_book_triggered();
+    void on_action_ref_article_triggered();
+    void on_action_ref_site_triggered();
+    void on_action_ref_dissertation_triggered();
+    void on_action_ref_deposmanuscript_triggered();
+    void on_action_ref_thesis_triggered();
+    void on_action_ref_patent_triggered();
+    void on_action_ref_inventsertificate_triggered();
 
-    void on_action_help_about_activated();
+    void on_action_help_about_triggered();
 
 private:
 

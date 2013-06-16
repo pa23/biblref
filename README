@@ -13,8 +13,8 @@ Creation of bibliographic references.
 --------------------------------------------------------------------------------
 Dependencies
   GNU/Linux
-    Qt >=4.8.0 (libQtCore.so.4, libQtGui.so.4)
-  MS Windows x86 (all necessary components are included in archive)
-    Qt x86 >=4.8.0 (QtCore4.dll, QtGui4.dll)
-    MinGW (libgcc_s_dw2-1.dll, mingwm10.dll)
+    Qt 5.0
+  MS Windows x86
+    Qt 5.0
+    MinGW 4.7
 --------------------------------------------------------------------------------
