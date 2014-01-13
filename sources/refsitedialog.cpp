@@ -4,7 +4,7 @@
 
     File: refsitedialog.cpp
 
-    Copyright (C) 2012-2013 Artem Petrov <pa2311@gmail.com>
+    Copyright (C) 2012-2014 Artem Petrov <pa2311@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -42,31 +42,16 @@ RefSiteDialog::~RefSiteDialog() {
 
 void RefSiteDialog::on_pushButton_add_clicked() {
 
-    if ( ui->lineEdit_pubtitle->text().isEmpty() ) {
+    if ( ui->lineEdit_pubtitle->text().isEmpty() ||
+         ui->lineEdit_sitetitle->text().isEmpty() ||
+         ui->lineEdit_url->text().isEmpty() ) {
 
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Сайт"
-                              "\" необходимо указать название публикации.");
-        return;
-    }
-
-    if ( ui->lineEdit_sitetitle->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Сайт"
-                              "\" необходимо указать название сайта.");
-        return;
-    }
-
-    if ( ui->lineEdit_url->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Сайт"
-                              "\" необходимо указать ссылку.");
-        return;
+        QMessageBox::warning(
+                    this, "biblref",
+                    "Для формирования ссылки типа \"Сайт\" необходимы следующие данные: "
+                    "название публикации, название сайта, URL.\n\n"
+                    "Так как вы выполнили не все требования, ссылка будет неполноценной."
+                    );
     }
 
     QStringList accessdate = ui->dateEdit->text().split(".");

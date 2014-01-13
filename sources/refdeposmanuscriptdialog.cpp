@@ -4,7 +4,7 @@
 
     File: refdeposmanuscriptdialog.cpp
 
-    Copyright (C) 2012-2013 Artem Petrov <pa2311@gmail.com>
+    Copyright (C) 2012-2014 Artem Petrov <pa2311@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -46,59 +46,21 @@ void RefDeposManuscriptDialog::on_pushButton_add_clicked() {
     QStringList authors = ui->lineEdit_authors->
             text().split(";", QString::SkipEmptyParts);
 
-    if ( ui->lineEdit_authors->text().isEmpty() || authors.isEmpty() ) {
+    if ( ui->lineEdit_authors->text().isEmpty() ||
+         authors.isEmpty() ||
+         ui->lineEdit_title->text().isEmpty() ||
+         ui->lineEdit_organization_1->text().isEmpty() ||
+         ui->lineEdit_city->text().isEmpty() ||
+         ui->lineEdit_organization_2->text().isEmpty() ||
+         ui->lineEdit_regnumber->text().isEmpty() ) {
 
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Депонированная рукопись"
-                              "\" необходима информация об авторах.");
-        return;
-    }
-
-    if ( ui->lineEdit_title->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Депонированная рукопись"
-                              "\" необходима информация о названии.");
-        return;
-    }
-
-    if ( ui->lineEdit_organization_1->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Депонированная рукопись"
-                              "\" необходима информация об организации.");
-        return;
-    }
-
-    if ( ui->lineEdit_city->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Депонированная рукопись"
-                              "\" необходимо указать город.");
-        return;
-    }
-
-    if ( ui->lineEdit_organization_2->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Депонированная рукопись"
-                              "\" необходима информация о принимающей "
-                              "организации.");
-        return;
-    }
-
-    if ( ui->lineEdit_regnumber->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Депонированная рукопись"
-                              "\" необходимо указать регистрационный номер.");
-        return;
+        QMessageBox::warning(
+                    this, "biblref",
+                    "Для формирования ссылки типа \"Депонированная рукопись\" необходимы следующие данные: "
+                    "информация об авторах, название работы, организация, город, принимающая организация, "
+                    "регистрационный номер.\n\n"
+                    "Так как вы выполнили не все требования, ссылка будет неполноценной."
+                    );
     }
 
     //
@@ -110,13 +72,15 @@ void RefDeposManuscriptDialog::on_pushButton_add_clicked() {
         authors[i] = authors[i].trimmed();
     }
 
-    QStringList firstAuthName = authors[0].split(" ");
+    if ( !authors.isEmpty() ) {
 
-    bibref += firstAuthName[firstAuthName.count()-1] + ", ";
+        QStringList firstAuthName = authors[0].split(" ");
+        bibref += firstAuthName[firstAuthName.count()-1] + ", ";
 
-    for ( ptrdiff_t i=0; i<firstAuthName.count()-1; i++ ) {
+        for ( ptrdiff_t i=0; i<firstAuthName.count()-1; i++ ) {
 
-        bibref += firstAuthName[i] + " ";
+            bibref += firstAuthName[i] + " ";
+        }
     }
 
     bibref += ui->lineEdit_title->text() + " / ";

@@ -4,7 +4,7 @@
 
     File: refbookdialog.cpp
 
-    Copyright (C) 2012-2013 Artem Petrov <pa2311@gmail.com>
+    Copyright (C) 2012-2014 Artem Petrov <pa2311@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -45,64 +45,23 @@ void RefBookDialog::on_pushButton_add_clicked() {
     QStringList authors = ui->lineEdit_authors->
             text().split(";", QString::SkipEmptyParts);
 
-    if ( ui->lineEdit_authors->text().isEmpty() || authors.isEmpty() ) {
+    if ( ui->lineEdit_authors->text().isEmpty() ||
+         authors.isEmpty() ||
+         ui->lineEdit_title->text().isEmpty() ||
+         ui->lineEdit_city->text().isEmpty() ||
+         ui->lineEdit_publish->text().isEmpty() ||
+         ((ui->lineEdit_language->text().isEmpty() && !ui->lineEdit_translators->text().isEmpty()) ||
+          (!ui->lineEdit_language->text().isEmpty() && ui->lineEdit_translators->text().isEmpty())) ||
+         (ui->spinBox_publication->value() == 0 && !ui->lineEdit_comment->text().isEmpty()) ) {
 
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Книга"
-                              "\" необходима информация об авторах.");
-        return;
-    }
-
-    if ( ui->lineEdit_title->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Книга"
-                              "\" необходима информация о названии.");
-        return;
-    }
-
-    if ( ui->lineEdit_city->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Книга"
-                              "\" необходима информация о городе.");
-        return;
-    }
-
-    if ( ui->lineEdit_publish->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Книга"
-                              "\" необходима информация об издательстве.");
-        return;
-    }
-
-    if ( (ui->lineEdit_language->text().isEmpty()
-          && !ui->lineEdit_translators->text().isEmpty())
-         || (!ui->lineEdit_language->text().isEmpty()
-             && ui->lineEdit_translators->text().isEmpty()) ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Если издание переводное, то необходимо "
-                              "указывать и язык оригинала и редакторов "
-                              "перевода.");
-        return;
-    }
-
-    if ( ui->spinBox_publication->value() == 0
-         && !ui->lineEdit_comment->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Если указываете комментарий к изданию, то "
-                              "также необходимо указать и номер издания, "
-                              "отличный от нуля.");
-        return;
+        QMessageBox::warning(
+                    this, "biblref",
+                    "Для формирования ссылки типа \"Книга\" необходимы следующие данные: "
+                    "информация об авторах, название, город, издательство; если издание переводное, "
+                    "то необходимо указывать и язык оригинала, и редакторов перевода; если указывается "
+                    "комментарий к изданию, то также необходимо указать и номер издания.\n\n"
+                    "Так как вы выполнили не все требования, ссылка будет неполноценной."
+                    );
     }
 
     //

@@ -4,7 +4,7 @@
 
     File: mainwindow.cpp
 
-    Copyright (C) 2012-2013 Artem Petrov <pa2311@gmail.com>
+    Copyright (C) 2012-2014 Artem Petrov <pa2311@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -222,9 +222,9 @@ void MainWindow::on_action_help_about_triggered() {
 
     QString str = "<b>biblref " + VERSION + "</b>\n"
             "<br><br>Создание библиографических ссылок."
-            "<br><br>Copyright (C) 2012-2013 Artem Petrov "
+            "<br><br>Copyright (C) 2012-2014 Artem Petrov "
             "<a href= \"mailto:pa2311@gmail.com\" >pa2311@gmail.com</a>"
-            "<br><br>Сайт программы: "
+            "<br><br>Исходный код: "
             "<a href= \"https://github.com/pa23/biblref\">"
             "https://github.com/pa23/biblref</a>"
             "<br>Блог автора: "
@@ -255,7 +255,7 @@ void MainWindow::saveIfNecessary() {
     if ( !ui->plainTextEdit_references->document()->isEmpty() ) {
 
         ptrdiff_t ret = QMessageBox::question(
-                    0,
+                    this,
                     "biblref",
                     "Документ содержит данные. Сохранить их?",
                     QMessageBox::Yes,

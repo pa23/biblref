@@ -30,7 +30,7 @@
       <property name="font">
        <font>
         <family>Monospace</family>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
      </widget>
@@ -43,7 +43,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -136,7 +136,7 @@
   </action>
   <action name="action_ref_dissertation">
    <property name="text">
-    <string>Диссертация/Автореферат...</string>
+    <string>Диссертация / Автореферат...</string>
    </property>
   </action>
   <action name="action_ref_authabstract">

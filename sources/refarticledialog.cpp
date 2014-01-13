@@ -4,7 +4,7 @@
 
     File: refarticledialog.cpp
 
-    Copyright (C) 2012-2013 Artem Petrov <pa2311@gmail.com>
+    Copyright (C) 2012-2014 Artem Petrov <pa2311@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -45,39 +45,18 @@ void RefArticleDialog::on_pushButton_add_clicked() {
     QStringList authors = ui->lineEdit_authors->
             text().split(";", QString::SkipEmptyParts);
 
-    if ( ui->lineEdit_authors->text().isEmpty() || authors.isEmpty() ) {
+    if ( ui->lineEdit_authors->text().isEmpty() ||
+         authors.isEmpty() ||
+         ui->lineEdit_arttitle->text().isEmpty() ||
+         ui->lineEdit_pubtitle->text().isEmpty() ||
+         ui->spinBox_startpage->value() > ui->spinBox_endpage->value() ) {
 
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Статья"
-                              "\" необходима информация об авторах.");
-        return;
-    }
-
-    if ( ui->lineEdit_arttitle->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Статья"
-                              "\" необходимо указать название статьи.");
-        return;
-    }
-
-    if ( ui->lineEdit_pubtitle->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Статья"
-                              "\" необходимо указать название журнала.");
-        return;
-    }
-
-    if ( ui->spinBox_startpage->value() > ui->spinBox_endpage->value() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Проверьте номера страниц.");
-        return;
+        QMessageBox::warning(
+                    this, "biblref",
+                    "Для формирования ссылки типа \"Статья\" необходимы следующие данные: "
+                    "информация об авторах, названия статьи и журнала, правильно выставленные номера страниц.\n\n"
+                    "Так как вы выполнили не все требования, ссылка будет неполноценной."
+                    );
     }
 
     //

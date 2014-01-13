@@ -4,7 +4,7 @@
 
     File: refpatentdialog.cpp
 
-    Copyright (C) 2012-2013 Artem Petrov <pa2311@gmail.com>
+    Copyright (C) 2012-2014 Artem Petrov <pa2311@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -45,41 +45,18 @@ void RefPatentDialog::on_pushButton_add_clicked() {
     QStringList authors = ui->lineEdit_authors->
             text().split(";", QString::SkipEmptyParts);
 
-    if ( ui->lineEdit_authors->text().isEmpty() || authors.isEmpty() ) {
+    if ( ui->lineEdit_authors->text().isEmpty() ||
+         authors.isEmpty() ||
+         ui->lineEdit_country->text().isEmpty() ||
+         ui->lineEdit_classification->text().isEmpty() ||
+         ui->lineEdit_title->text().isEmpty() ) {
 
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Патент"
-                              "\" необходима информация об авторах.");
-        return;
-    }
-
-    if ( ui->lineEdit_country->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Патент"
-                              "\" необходимо указать страну.");
-        return;
-    }
-
-    if ( ui->lineEdit_classification->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Патент"
-                              "\" необходимо указать информацию "
-                              "о классификации документа.");
-        return;
-    }
-
-    if ( ui->lineEdit_title->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Патент"
-                              "\" необходимо указать название.");
-        return;
+        QMessageBox::warning(
+                    this, "biblref",
+                    "Для формирования ссылки типа \"Патент / Полезная модель\" необходимы следующие данные: "
+                    "информация об авторах, страна, информация о классификации документа, название.\n\n"
+                    "Так как вы выполнили не все требования, ссылка будет неполноценной."
+                    );
     }
 
     //

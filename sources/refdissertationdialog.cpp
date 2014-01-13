@@ -4,7 +4,7 @@
 
     File: refdissertationdialog.cpp
 
-    Copyright (C) 2012-2013 Artem Petrov <pa2311@gmail.com>
+    Copyright (C) 2012-2014 Artem Petrov <pa2311@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -43,40 +43,17 @@ RefDissertationDialog::~RefDissertationDialog() {
 
 void RefDissertationDialog::on_pushButton_add_clicked() {
 
-    if ( ui->lineEdit_author->text().isEmpty() ) {
+    if ( ui->lineEdit_author->text().isEmpty() ||
+         ui->lineEdit_title->text().isEmpty() ||
+         ui->lineEdit_academicdeg->text().isEmpty() ||
+         ui->lineEdit_city->text().isEmpty() ) {
 
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Диссертация"
-                              "\" необходима информация об авторе.");
-        return;
-    }
-
-    if ( ui->lineEdit_title->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Диссертация"
-                              "\" необходимо указать тему работы.");
-        return;
-    }
-
-    if ( ui->lineEdit_academicdeg->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Диссертация"
-                              "\" необходимо указать ученую степень.");
-        return;
-    }
-
-    if ( ui->lineEdit_city->text().isEmpty() ) {
-
-        QMessageBox::critical(this, "biblref",
-                              "Ссылка не сформирована.\n"
-                              "Для ссылки типа \"Диссертация"
-                              "\" необходимо указать город.");
-        return;
+        QMessageBox::warning(
+                    this, "biblref",
+                    "Для формирования ссылки типа \"Диссертация / Автореферат\" необходимы следующие данные: "
+                    "информация об авторе, тема работы, ученая степень, город.\n\n"
+                    "Так как вы выполнили не все требования, ссылка будет неполноценной."
+                    );
     }
 
     //
