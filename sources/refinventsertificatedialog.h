@@ -33,17 +33,13 @@ class RefInventSertificateDialog : public QDialog {
     Q_OBJECT
 
 public:
-
-    explicit RefInventSertificateDialog(QPlainTextEdit *,
-                                        QWidget *parent = 0);
+    explicit RefInventSertificateDialog(QPlainTextEdit *, QWidget *parent = 0);
     ~RefInventSertificateDialog();
 
 private slots:
-
     void on_pushButton_add_clicked();
 
 private:
-
     Ui::RefInventSertificateDialog *ui;
     QPlainTextEdit *plainTextEdit;
 

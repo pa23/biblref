@@ -43,16 +43,13 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
 protected:
-
      void closeEvent(QCloseEvent *event);
 
 private slots:
-
     void on_action_file_open_triggered();
     void on_action_file_save_triggered();
     void on_action_file_print_triggered();
@@ -72,7 +69,6 @@ private slots:
     void on_action_help_about_triggered();
 
 private:
-
     Ui::MainWindow *ui;
 
     QSharedPointer<RefBookDialog> refbookdialog;

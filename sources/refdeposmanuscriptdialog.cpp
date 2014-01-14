@@ -37,17 +37,12 @@ RefDeposManuscriptDialog::RefDeposManuscriptDialog(QPlainTextEdit *pte,
 }
 
 RefDeposManuscriptDialog::~RefDeposManuscriptDialog() {
-
     delete ui;
 }
 
 void RefDeposManuscriptDialog::on_pushButton_add_clicked() {
 
-    QStringList authors = ui->lineEdit_authors->
-            text().split(";", QString::SkipEmptyParts);
-
     if ( ui->lineEdit_authors->text().isEmpty() ||
-         authors.isEmpty() ||
          ui->lineEdit_title->text().isEmpty() ||
          ui->lineEdit_organization_1->text().isEmpty() ||
          ui->lineEdit_city->text().isEmpty() ||
@@ -67,27 +62,29 @@ void RefDeposManuscriptDialog::on_pushButton_add_clicked() {
 
     QString bibref("");
 
-    for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
-
-        authors[i] = authors[i].trimmed();
-    }
+    QStringList authors = ui->lineEdit_authors->text().split(";", QString::SkipEmptyParts);
 
     if ( !authors.isEmpty() ) {
+
+        for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+            authors[i] = authors[i].trimmed();
+        }
 
         QStringList firstAuthName = authors[0].split(" ");
         bibref += firstAuthName[firstAuthName.count()-1] + ", ";
 
         for ( ptrdiff_t i=0; i<firstAuthName.count()-1; i++ ) {
-
             bibref += firstAuthName[i] + " ";
         }
     }
 
     bibref += ui->lineEdit_title->text() + " / ";
 
-    for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+    if ( !authors.isEmpty() ) {
 
-        bibref += authors[i] + ", ";
+        for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+            bibref += authors[i] + ", ";
+        }
     }
 
     bibref.chop(2);

@@ -36,7 +36,6 @@ RefSiteDialog::RefSiteDialog(QPlainTextEdit *pte, QWidget *parent) :
 }
 
 RefSiteDialog::~RefSiteDialog() {
-
     delete ui;
 }
 
@@ -72,40 +71,37 @@ void RefSiteDialog::on_pushButton_add_clicked() {
 
     if ( !ui->lineEdit_authors->text().isEmpty() ) {
 
-        QStringList authors = ui->lineEdit_authors->
-                text().split(";", QString::SkipEmptyParts);
+        QStringList authors = ui->lineEdit_authors->text().split(";", QString::SkipEmptyParts);
 
         if ( !authors.isEmpty() ) {
 
             for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
-
                 authors[i] = authors[i].trimmed();
             }
 
             if ( authors.count() < 4 ) {
 
                 QStringList firstAuthName = authors[0].split(" ");
-
                 bibref += firstAuthName[firstAuthName.count()-1] + ", ";
 
                 for ( ptrdiff_t i=0; i<firstAuthName.count()-1; i++ ) {
-
                     bibref += firstAuthName[i] + " ";
                 }
             }
+        }
 
-            bibref += ui->lineEdit_pubtitle->text() + " / ";
+        bibref += ui->lineEdit_pubtitle->text() + " / ";
+
+        if ( !authors.isEmpty() ) {
 
             for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
-
                 bibref += authors[i] + ", ";
             }
-
-            bibref.chop(2);
         }
+
+        bibref.chop(2);
     }
     else {
-
         bibref += ui->lineEdit_pubtitle->text();
     }
 
@@ -116,7 +112,6 @@ void RefSiteDialog::on_pushButton_add_clicked() {
             + ". ";
 
     if ( !ui->lineEdit_sysspec->text().isEmpty() ) {
-
         bibref += "Систем. требования: "
                 + ui->lineEdit_sysspec->text()
                 + ". ";

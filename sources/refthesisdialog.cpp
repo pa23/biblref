@@ -36,17 +36,12 @@ RefThesisDialog::RefThesisDialog(QPlainTextEdit *pte, QWidget *parent) :
 }
 
 RefThesisDialog::~RefThesisDialog() {
-
     delete ui;
 }
 
 void RefThesisDialog::on_pushButton_add_clicked() {
 
-    QStringList authors = ui->lineEdit_authors->
-            text().split(";", QString::SkipEmptyParts);
-
     if ( ui->lineEdit_authors->text().isEmpty() ||
-         authors.isEmpty() ||
          ui->lineEdit_reportsubj->text().isEmpty() ||
          ui->lineEdit_conference->text().isEmpty() ||
          ui->lineEdit_city->text().isEmpty() ||
@@ -64,28 +59,32 @@ void RefThesisDialog::on_pushButton_add_clicked() {
 
     QString bibref("");
 
-    for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+    QStringList authors = ui->lineEdit_authors->text().split(";", QString::SkipEmptyParts);
 
-        authors[i] = authors[i].trimmed();
-    }
+    if ( !authors.isEmpty() ) {
 
-    if ( authors.count() < 4 ) {
+        for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+            authors[i] = authors[i].trimmed();
+        }
 
-        QStringList firstAuthName = authors[0].split(" ");
+        if ( authors.count() < 4 ) {
 
-        bibref += firstAuthName[firstAuthName.count()-1] + ", ";
+            QStringList firstAuthName = authors[0].split(" ");
+            bibref += firstAuthName[firstAuthName.count()-1] + ", ";
 
-        for ( ptrdiff_t i=0; i<firstAuthName.count()-1; i++ ) {
-
-            bibref += firstAuthName[i] + " ";
+            for ( ptrdiff_t i=0; i<firstAuthName.count()-1; i++ ) {
+                bibref += firstAuthName[i] + " ";
+            }
         }
     }
 
     bibref += ui->lineEdit_reportsubj->text() + " / ";
 
-    for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+    if ( !authors.isEmpty() ) {
 
-        bibref += authors[i] + ", ";
+        for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+            bibref += authors[i] + ", ";
+        }
     }
 
     bibref.chop(2);
@@ -95,16 +94,13 @@ void RefThesisDialog::on_pushButton_add_clicked() {
             + " : тез. докл. ";
 
     if ( !ui->lineEdit_thesrepors->text().isEmpty() ) {
-
         bibref += ui->lineEdit_thesrepors->text()
                 + " ";
     }
 
     bibref += "― ";
 
-    if ( ui->spinBox_volume->value() != 0 &&
-         ui->spinBox_part->value() != 0) {
-
+    if ( ui->spinBox_volume->value() != 0 && ui->spinBox_part->value() != 0) {
         bibref += "Т. "
                 + QString::number(ui->spinBox_volume->value())
                 + ", ч. "
@@ -118,12 +114,10 @@ void RefThesisDialog::on_pushButton_add_clicked() {
             + ". ― C. ";
 
     if ( ui->spinBox_startpage->value() == ui->spinBox_endpage->value() ) {
-
         bibref += QString::number(ui->spinBox_startpage->value())
                 + ".";
     }
     else {
-
         bibref += QString::number(ui->spinBox_startpage->value())
                 + "―"
                 + QString::number(ui->spinBox_endpage->value())

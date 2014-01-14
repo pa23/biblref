@@ -37,7 +37,6 @@ RefDissertationDialog::RefDissertationDialog(QPlainTextEdit *pte,
 }
 
 RefDissertationDialog::~RefDissertationDialog() {
-
     delete ui;
 }
 
@@ -62,28 +61,27 @@ void RefDissertationDialog::on_pushButton_add_clicked() {
 
     QStringList authName = ui->lineEdit_author->text().split(" ");
 
-    bibref += authName[authName.count()-1] + ", ";
+    if ( !authName.isEmpty() ) {
+        
+        bibref += authName[authName.count()-1] + ", ";
 
-    for ( ptrdiff_t i=0; i<authName.count()-1; i++ ) {
-
-        bibref += authName[i] + " ";
+        for ( ptrdiff_t i=0; i<authName.count()-1; i++ ) {
+            bibref += authName[i] + " ";
+        }
     }
 
     bibref += ui->lineEdit_title->text();
 
     if ( ui->checkBox_authabstract->isChecked() ) {
-
         bibref += " : автореферат дис. ... ";
     }
     else {
-
         bibref += " : дис. ... ";
     }
 
     bibref += ui->lineEdit_academicdeg->text();
 
     if ( !ui->lineEdit_speccode->text().isEmpty() ) {
-
         bibref += ": "
                 + ui->lineEdit_speccode->text();
     }

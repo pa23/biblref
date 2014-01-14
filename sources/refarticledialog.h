@@ -33,16 +33,13 @@ class RefArticleDialog : public QDialog {
     Q_OBJECT
 
 public:
-
     explicit RefArticleDialog(QPlainTextEdit *, QWidget *parent = 0);
     ~RefArticleDialog();
 
 private slots:
-
     void on_pushButton_add_clicked();
 
 private:
-
     Ui::RefArticleDialog *ui;
     QPlainTextEdit *plainTextEdit;
 

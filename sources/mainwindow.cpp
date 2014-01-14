@@ -60,12 +60,10 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 MainWindow::~MainWindow() {
-
     delete ui;
 }
 
 void MainWindow::closeEvent(QCloseEvent *event) {
-
     saveIfNecessary();
     event->accept();
 }
@@ -75,35 +73,23 @@ void MainWindow::on_action_file_open_triggered() {
     saveIfNecessary();
 
     QString dir(QDir::currentPath());
-
     QString filename(QFileDialog::getOpenFileName(
                          this,
                          tr("Открыть файл..."),
                          dir,
-                         QString::fromLatin1(
-                             "Text files (*.txt);;All files (*)"
-                             ),
-                         0,
-                         0));
+                         QString::fromLocal8Bit("Text files (*.txt);;All files (*)"),
+                         0, 0));
 
     if ( !filename.isEmpty() ) {
 
         QFile filedata(filename);
 
         if ( filedata.open(QIODevice::ReadOnly) ) {
-
-            ui->plainTextEdit_references->
-                    setPlainText(filedata.readAll());
-
+            ui->plainTextEdit_references->setPlainText(filedata.readAll());
             filedata.close();
         }
         else {
-
-            QMessageBox::critical(
-                        0,
-                        "biblref",
-                        "Не могу открыть файл \"" + filename + "\"!",
-                        0, 0, 0);
+            QMessageBox::critical(this,"biblref", "Не могу открыть файл \"" + filename + "\"!", 0, 0, 0);
             return;
         }
     }
@@ -112,28 +98,19 @@ void MainWindow::on_action_file_open_triggered() {
 void MainWindow::on_action_file_save_triggered() {
 
     QString dir(QDir::currentPath());
-
     QString filename(QFileDialog::getSaveFileName(
                          this,
                          "Сохранить в файл...",
                          dir,
-                         QString::fromLatin1(
-                             "Text files (*.txt);;All files (*)"
-                             ),
-                         0,
-                         0));
+                         QString::fromLocal8Bit("Text files (*.txt);;All files (*)"),
+                         0, 0));
 
     if ( !filename.isEmpty() ) {
 
         QFile file(filename);
 
         if ( !file.open(QIODevice::WriteOnly) ) {
-
-            QMessageBox::critical(
-                        0,
-                        "biblref",
-                        "Не могу открыть файл \"" + filename + "\"!",
-                        0, 0, 0);
+            QMessageBox::critical(this, "biblref", "Не могу открыть файл \"" + filename + "\"!", 0, 0, 0);
             return;
         }
 
@@ -154,67 +131,53 @@ void MainWindow::on_action_file_print_triggered() {
     QPrintDialog printDialog(&printer, this);
 
     if ( printDialog.exec() == QDialog::Accepted ) {
-
         ui->plainTextEdit_references->print(&printer);
     }
 }
 
 void MainWindow::on_action_file_quit_triggered() {
-
     close();
 }
 
 void MainWindow::on_action_view_folding_triggered() {
 
     if ( ui->action_view_folding->isChecked() ) {
-
-        ui->plainTextEdit_references->
-                setLineWrapMode(QPlainTextEdit::WidgetWidth);
+        ui->plainTextEdit_references->setLineWrapMode(QPlainTextEdit::WidgetWidth);
     }
     else {
-
-        ui->plainTextEdit_references->
-                setLineWrapMode(QPlainTextEdit::NoWrap);
+        ui->plainTextEdit_references->setLineWrapMode(QPlainTextEdit::NoWrap);
     }
 }
 
 void MainWindow::on_action_ref_book_triggered() {
-
     refbookdialog->exec();
 }
 
 void MainWindow::on_action_ref_article_triggered() {
-
     refarticledialog->exec();
 }
 
 void MainWindow::on_action_ref_site_triggered() {
-
     refsitedialog->exec();
 }
 
 void MainWindow::on_action_ref_dissertation_triggered() {
-
     refdissertationdialog->exec();
 }
 
 void MainWindow::on_action_ref_deposmanuscript_triggered() {
-
     refdeposmanuscriptdialog->exec();
 }
 
 void MainWindow::on_action_ref_thesis_triggered() {
-
     refthesisdialog->exec();
 }
 
 void MainWindow::on_action_ref_patent_triggered() {
-
     refpatentdialog->exec();
 }
 
 void MainWindow::on_action_ref_inventsertificate_triggered() {
-
     refinventsertificatedialog->exec();
 }
 
@@ -262,7 +225,6 @@ void MainWindow::saveIfNecessary() {
                     QMessageBox::No);
 
         if ( ret == QMessageBox::Yes ) {
-
             on_action_file_save_triggered();
         }
     }

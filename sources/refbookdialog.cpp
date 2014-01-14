@@ -36,17 +36,12 @@ RefBookDialog::RefBookDialog(QPlainTextEdit *pte, QWidget *parent) :
 }
 
 RefBookDialog::~RefBookDialog() {
-
     delete ui;
 }
 
 void RefBookDialog::on_pushButton_add_clicked() {
 
-    QStringList authors = ui->lineEdit_authors->
-            text().split(";", QString::SkipEmptyParts);
-
     if ( ui->lineEdit_authors->text().isEmpty() ||
-         authors.isEmpty() ||
          ui->lineEdit_title->text().isEmpty() ||
          ui->lineEdit_city->text().isEmpty() ||
          ui->lineEdit_publish->text().isEmpty() ||
@@ -68,44 +63,45 @@ void RefBookDialog::on_pushButton_add_clicked() {
 
     QString bibref("");
 
-    for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+    QStringList authors = ui->lineEdit_authors->text().split(";", QString::SkipEmptyParts);
 
-        authors[i] = authors[i].trimmed();
-    }
+    if ( !authors.isEmpty() ) {
 
-    if ( authors.count() < 4 ) {
+        for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+            authors[i] = authors[i].trimmed();
+        }
 
-        QStringList firstAuthName = authors[0].split(" ");
+        if ( !authors.isEmpty() && (authors.count() < 4) ) {
 
-        bibref += firstAuthName[firstAuthName.count()-1] + ", ";
+            QStringList firstAuthName = authors[0].split(" ");
+            bibref += firstAuthName[firstAuthName.count()-1] + ", ";
 
-        for ( ptrdiff_t i=0; i<firstAuthName.count()-1; i++ ) {
-
-            bibref += firstAuthName[i] + " ";
+            for ( ptrdiff_t i=0; i<firstAuthName.count()-1; i++ ) {
+                bibref += firstAuthName[i] + " ";
+            }
         }
     }
 
     bibref += ui->lineEdit_title->text() + " / ";
 
-    for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+    if ( !authors.isEmpty() ) {
 
-        bibref += authors[i] + ", ";
+        for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+            bibref += authors[i] + ", ";
+        }
     }
 
     bibref.chop(2);
 
-    if ( !ui->lineEdit_language->text().isEmpty()
-         && !ui->lineEdit_translators->text().isEmpty() ) {
+    if ( !ui->lineEdit_language->text().isEmpty() && !ui->lineEdit_translators->text().isEmpty() ) {
 
         bibref += " ; пер. с "
                 + ui->lineEdit_language->text()
                 + " под ред. ";
 
-        QStringList translators = ui->lineEdit_translators->
-                text().split(";", QString::SkipEmptyParts);
+        QStringList translators = ui->lineEdit_translators->text().split(";", QString::SkipEmptyParts);
 
         for ( ptrdiff_t i=0; i<translators.count(); i++ ) {
-
             bibref += translators[i].trimmed() + ", ";
         }
 
@@ -115,14 +111,12 @@ void RefBookDialog::on_pushButton_add_clicked() {
     bibref += ".";
 
     if ( ui->spinBox_publication->value() != 0 ) {
-
         bibref += " ― "
                 + QString::number(ui->spinBox_publication->value())
                 + "-е изд.";
     }
 
     if ( !ui->lineEdit_comment->text().isEmpty() ) {
-
         bibref += ", " + ui->lineEdit_comment->text();
     }
 
@@ -135,7 +129,6 @@ void RefBookDialog::on_pushButton_add_clicked() {
             + ". ― ";
 
     if ( ui->spinBox_volume->value() != 0 ) {
-
         bibref += "Т. "
                 + QString::number(ui->spinBox_volume->value())
                 + ". ― ";
@@ -144,7 +137,6 @@ void RefBookDialog::on_pushButton_add_clicked() {
     bibref += QString::number(ui->spinBox_pages->value()) + " с.";
 
     if ( !ui->lineEdit_isbn->text().isEmpty() ) {
-
         bibref += " ― ISBN " + ui->lineEdit_isbn->text() + ".";
     }
 

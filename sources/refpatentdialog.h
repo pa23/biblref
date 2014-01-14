@@ -33,16 +33,13 @@ class RefPatentDialog : public QDialog {
     Q_OBJECT
 
 public:
-
     explicit RefPatentDialog(QPlainTextEdit *, QWidget *parent = 0);
     ~RefPatentDialog();
 
 private slots:
-
     void on_pushButton_add_clicked();
 
 private:
-
     Ui::RefPatentDialog *ui;
     QPlainTextEdit *plainTextEdit;
 

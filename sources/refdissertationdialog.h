@@ -33,17 +33,13 @@ class RefDissertationDialog : public QDialog {
     Q_OBJECT
 
 public:
-
-    explicit RefDissertationDialog(QPlainTextEdit *,
-                                   QWidget *parent = 0);
+    explicit RefDissertationDialog(QPlainTextEdit *, QWidget *parent = 0);
     ~RefDissertationDialog();
 
 private slots:
-
     void on_pushButton_add_clicked();
 
 private:
-
     Ui::RefDissertationDialog *ui;
     QPlainTextEdit *plainTextEdit;
 

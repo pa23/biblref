@@ -24,7 +24,7 @@ TARGET = biblref
 
 TEMPLATE = app
 
-VERSION = 1.1.4
+VERSION = 1.1.5
 
 SOURCES += sources/main.cpp \
     sources/mainwindow.cpp \

@@ -36,17 +36,12 @@ RefPatentDialog::RefPatentDialog(QPlainTextEdit *pte, QWidget *parent) :
 }
 
 RefPatentDialog::~RefPatentDialog() {
-
     delete ui;
 }
 
 void RefPatentDialog::on_pushButton_add_clicked() {
 
-    QStringList authors = ui->lineEdit_authors->
-            text().split(";", QString::SkipEmptyParts);
-
     if ( ui->lineEdit_authors->text().isEmpty() ||
-         authors.isEmpty() ||
          ui->lineEdit_country->text().isEmpty() ||
          ui->lineEdit_classification->text().isEmpty() ||
          ui->lineEdit_title->text().isEmpty() ) {
@@ -63,12 +58,12 @@ void RefPatentDialog::on_pushButton_add_clicked() {
 
     QString bibref("");
 
-    if ( ui->comboBox_doctype->currentIndex() == PATENT ) {
+    QStringList authors = ui->lineEdit_authors->text().split(";", QString::SkipEmptyParts);
 
+    if ( ui->comboBox_doctype->currentIndex() == PATENT ) {
         bibref += "Пат. ";
     }
     else if ( ui->comboBox_doctype->currentIndex() == PROFMODEL ) {
-
         bibref += "П. м. ";
     }
 
@@ -81,9 +76,11 @@ void RefPatentDialog::on_pushButton_add_clicked() {
             + ui->lineEdit_title->text()
             + " / ";
 
-    for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+    if ( !authors.isEmpty() ) {
 
-        bibref += authors[i].trimmed() + ", ";
+        for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+            bibref += authors[i].trimmed() + ", ";
+        }
     }
 
     bibref.chop(2);

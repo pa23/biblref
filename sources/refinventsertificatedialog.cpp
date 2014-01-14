@@ -37,17 +37,12 @@ RefInventSertificateDialog::RefInventSertificateDialog(QPlainTextEdit *pte,
 }
 
 RefInventSertificateDialog::~RefInventSertificateDialog() {
-
     delete ui;
 }
 
 void RefInventSertificateDialog::on_pushButton_add_clicked() {
 
-    QStringList authors = ui->lineEdit_authors->
-            text().split(";", QString::SkipEmptyParts);
-
     if ( ui->lineEdit_authors->text().isEmpty() ||
-         authors.isEmpty() ||
          ui->lineEdit_country->text().isEmpty() ||
          ui->lineEdit_classification->text().isEmpty() ||
          ui->lineEdit_title->text().isEmpty() ) {
@@ -64,6 +59,8 @@ void RefInventSertificateDialog::on_pushButton_add_clicked() {
 
     QString bibref("");
 
+    QStringList authors = ui->lineEdit_authors->text().split(";", QString::SkipEmptyParts);
+
     bibref += "А.с. "
             + QString::number(ui->spinBox_docnumber->value())
             + " "
@@ -74,9 +71,11 @@ void RefInventSertificateDialog::on_pushButton_add_clicked() {
             + ui->lineEdit_title->text()
             + " / ";
 
-    for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+    if ( !authors.isEmpty() ) {
 
-        bibref += authors[i].trimmed() + ", ";
+        for ( ptrdiff_t i=0; i<authors.count(); i++ ) {
+            bibref += authors[i].trimmed() + ", ";
+        }
     }
 
     bibref.chop(2);

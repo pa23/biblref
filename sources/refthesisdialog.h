@@ -33,16 +33,13 @@ class RefThesisDialog : public QDialog {
     Q_OBJECT
 
 public:
-
     explicit RefThesisDialog(QPlainTextEdit *, QWidget *parent = 0);
     ~RefThesisDialog();
 
 private slots:
-
     void on_pushButton_add_clicked();
 
 private:
-
     Ui::RefThesisDialog *ui;
     QPlainTextEdit *plainTextEdit;
 

@@ -33,17 +33,13 @@ class RefDeposManuscriptDialog : public QDialog {
     Q_OBJECT
 
 public:
-
-    explicit RefDeposManuscriptDialog(QPlainTextEdit *,
-                                      QWidget *parent = 0);
+    explicit RefDeposManuscriptDialog(QPlainTextEdit *, QWidget *parent = 0);
     ~RefDeposManuscriptDialog();
 
 private slots:
-
     void on_pushButton_add_clicked();
 
 private:
-
     Ui::RefDeposManuscriptDialog *ui;
     QPlainTextEdit *plainTextEdit;
 
